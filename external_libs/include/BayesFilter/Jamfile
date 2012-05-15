@@ -1,0 +1,23 @@
+# Bayes++ Jamfile - See Boost.build v2
+# BayesFilter - The Bayesian filtering library
+
+# Propagated usage requirements
+project BayesFilter
+     : usage-requirements
+        <include>".."		# Library headers are refered to as "BayesFilter/xxx.hpp"
+        <toolset>msvc:<define>"_SECURE_SCL_DEPRECATE=0"
+
+;
+
+# Base names of the source files for BayesFilter
+CPP_SOURCES =
+    bayesFlt bayesFltAlg matSup UdU covFlt infFlt infRtFlt itrFlt SIRFlt UDFlt unsFlt CIFlt ;
+
+# Declare the BayesFilter static link library
+lib BayesFilter : $(CPP_SOURCES).cpp
+    : <link>static
+      <toolset>msvc:<define>"_SECURE_SCL_DEPRECATE=0"
+      <toolset>gcc:<cxxflags>"-Wall"
+      <toolset>intel:<cxxflags>"-mp1"		# Require IEEE NaN comparisons
+#    <toolset>gcc:<cxxflags>"-pedantic"		# Pedantic checks for validation with GCC (will include long long warnings)
+;

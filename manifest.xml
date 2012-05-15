@@ -1,0 +1,13 @@
+<package>
+  <description brief="bayes_filter_ros">
+	This package is the port of the Bayes++ classes to ROS.
+
+  </description>
+  <author>Miquel Massot</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/bayes_filter_ros</url>
+
+</package>
+
+
