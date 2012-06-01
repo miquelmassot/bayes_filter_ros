@@ -30,22 +30,20 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #target_link_libraries(example ${PROJECT_NAME})
 
 
-#Set the dependencies of Bayes++
-rosbuild_add_boost_directories()
-SET(CMAKE_CXX_FLAGS "-msse3")
 #Source the files from Bayes++ and compile the library
-
-rosbuild_add_library(BayesFilter external_libs/include/BayesFilter/bayesFlt.cpp
-                external_libs/include/BayesFilter/bayesFltAlg.cpp
-		external_libs/include/BayesFilter/CIFlt.cpp
-		external_libs/include/BayesFilter/covFlt.cpp
-		external_libs/include/BayesFilter/infFlt.cpp
-		external_libs/include/BayesFilter/infRtFlt.cpp
-		external_libs/include/BayesFilter/itrFlt.cpp
-		external_libs/include/BayesFilter/matSup.cpp
-		external_libs/include/BayesFilter/SIRFlt.cpp
-		external_libs/include/BayesFilter/UDFlt.cpp
-		external_libs/include/BayesFilter/UdU.cpp
-		external_libs/include/BayesFilter/unsFlt.cpp
-		external_libs/include/BayesFilter/bayesFlt.cpp)
-
+SET(CMAKE_CXX_FLAGS "-ftemplate-depth-128 -finline-functions -Wno-inline -Wall")
+rosbuild_add_boost_directories()
+#add_library(BayesFilter STATIC src/BayesFilter/bayesFlt.cpp
+rosbuild_add_library(BayesFilter src/BayesFilter/bayesFlt.cpp
+                src/BayesFilter/bayesFltAlg.cpp
+		src/BayesFilter/CIFlt.cpp
+		src/BayesFilter/covFlt.cpp
+		src/BayesFilter/infFlt.cpp
+		src/BayesFilter/infRtFlt.cpp
+		src/BayesFilter/itrFlt.cpp
+		src/BayesFilter/matSup.cpp
+		src/BayesFilter/SIRFlt.cpp
+		src/BayesFilter/UDFlt.cpp
+		src/BayesFilter/UdU.cpp
+		src/BayesFilter/unsFlt.cpp
+		src/BayesFilter/bayesFlt.cpp)
